@@ -432,4 +432,29 @@ merci d'avance", $email->getVisibleText());
             array('2016/11/08 14:26、Test user <test@example.com> のメッセージ:'), // Japanese Apple Mail iPhone
         );
     }
+
+    /**
+     * @dataProvider getFromHeaders
+     */
+    public function testFromQuoteHeader($from)
+    {
+        $email = $this->parser->parse(str_replace('[FROM]', $from, $this->getFixtures('email_with_from_headers.txt')));
+        $fragments = $email->getFragments();
+        $this->assertSame(<<<CONTENT
+{$from}
+
+My email is <foo@example.com>
+CONTENT
+        , $fragments[1]->getContent());
+    }
+
+    public function getFromHeaders()
+    {
+        return array(
+            array('From: foo@example.com <foo@example.com>'),
+            array('De: foo@example.com <foo@example.com>'),
+            array('Van: foo@example.com <foo@example.com>'),
+            array('Da: foo@example.com <foo@example.com>'),
+        );
+    }
 }
