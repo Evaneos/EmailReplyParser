@@ -148,7 +148,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_7.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailDutch()
@@ -156,7 +155,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_8.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailSignatureWithEqual()
@@ -164,7 +162,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_9.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailHotmail()
@@ -172,7 +169,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_10.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailWhitespaceBeforeHeader()
@@ -180,7 +176,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_11.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailWithSquareBrackets()
@@ -188,7 +183,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_12.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailDaIntoItalian()
@@ -196,7 +190,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_13.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailHeaderPolish()
@@ -204,18 +197,13 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_14.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
-    public function testEmailHeaderChinese()
+    public function testEmailHeaderSimplifiedChinese()
     {
         $email     = $this->parser->parse($this->getFixtures('email_21.txt'));
         $fragments = $email->getFragments();
-        $this->assertCount(2, $fragments);
-        $this->assertEquals(static::COMMON_FIRST_FRAGMENT, $email->getVisibleText());
-        $this->assertTrue($fragments[1]->isHidden());
-        $this->assertTrue($fragments[1]->isQuoted());
-
+        $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
     }
 
     public function testEmailSentFromMy()
@@ -223,7 +211,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_15.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailHeaderPolishWithDniaAndNapisala()
@@ -231,7 +218,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_16.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailHeaderPolishWithDateInIso8601()
@@ -239,7 +225,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_17.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
     public function testEmailOutlookEn()
@@ -247,7 +232,6 @@ EMAIL
         $email     = $this->parser->parse($this->getFixtures('email_18.txt'));
         $fragments = $email->getFragments();
         $this->assertEquals(static::COMMON_FIRST_FRAGMENT, trim($fragments[0]));
-
     }
 
 
