@@ -207,6 +207,17 @@ EMAIL
 
     }
 
+    public function testEmailHeaderChinese()
+    {
+        $email     = $this->parser->parse($this->getFixtures('email_21.txt'));
+        $fragments = $email->getFragments();
+        $this->assertCount(2, $fragments);
+        $this->assertEquals(static::COMMON_FIRST_FRAGMENT, $email->getVisibleText());
+        $this->assertTrue($fragments[1]->isHidden());
+        $this->assertTrue($fragments[1]->isQuoted());
+
+    }
+
     public function testEmailSentFromMy()
     {
         $email     = $this->parser->parse($this->getFixtures('email_15.txt'));
